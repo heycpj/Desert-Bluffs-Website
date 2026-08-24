@@ -3,27 +3,452 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bluffs.Poker</title>
+<title>Desert Bluffs Poker Club — Kennewick, WA</title>
+<meta name="description" content="Desert Bluffs Poker Club — Tri-Cities' poker room. Daily tournaments, live games, and promotions at 5215 W Clearwater Ave, Kennewick, WA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --teal: #2b7089;
+    --teal-dark: #1c4e60;
+    --coral: #e2604b;
+    --tan: #e8a873;
+    --bg: #16232b;
+    --bg-panel: #1e2f38;
+    --paper: #f0ece2;
+    --paper-dim: #a9b7bd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #0d1117;
-    color: #f0f0f0;
+    background: var(--bg);
+    color: var(--paper);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .horizon {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--coral) 15%, var(--tan) 50%, var(--coral) 85%, transparent);
+    opacity: 0.85;
+  }
+
+  /* ── Header / Nav ── */
+  header { position: sticky; top: 0; z-index: 100; background: var(--bg); }
+
+  .nav-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-between;
+    padding: 16px 32px;
+  }
+
+  .logo { display: flex; align-items: center; }
+  .logo img { height: 52px; width: auto; display: block; }
+
+  nav ul { list-style: none; display: flex; gap: 36px; }
+
+  nav a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--paper-dim);
+    transition: color 0.15s ease;
+  }
+  nav a:hover, nav a:focus-visible { color: var(--tan); }
+  nav a:focus-visible { outline: 2px solid var(--tan); outline-offset: 4px; border-radius: 2px; }
+
+  .nav-cta { display: flex; align-items: center; gap: 20px; }
+
+  .phone {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--paper-dim);
+    display: none;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: var(--paper);
+    padding: 10px 22px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition: background 0.15s ease, transform 0.15s ease;
+    display: inline-block;
+  }
+  .btn-primary:hover, .btn-primary:focus-visible { background: #ee7059; transform: translateY(-1px); }
+  .btn-primary:focus-visible { outline: 2px solid var(--tan); outline-offset: 3px; }
+
+  @media (min-width: 900px) { .phone { display: block; } }
+  @media (max-width: 780px) {
+    nav ul { display: none; }
+    .nav-wrap { padding: 14px 20px; }
+    .logo img { height: 42px; }
+  }
+
+  /* ── Featured Tournament Banner ── */
+  .banner {
+    background:
+      radial-gradient(ellipse at top, rgba(43,112,137,0.35), transparent 60%),
+      var(--bg);
+    background-image:
+      radial-gradient(ellipse at top, rgba(43,112,137,0.35), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 24px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 24px);
+    border-bottom: 1px solid #223842;
+    padding: 56px 32px 60px;
     text-align: center;
   }
-  h1 { font-size: 2.5rem; margin-bottom: .5rem; letter-spacing: -0.02em; }
-  p { color: #9a9a9a; font-size: 1.1rem; }
+  .banner-inner { max-width: 900px; margin: 0 auto; }
+  .banner .amount {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    color: var(--tan);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .banner .variant {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--paper);
+    margin: 14px 0 22px;
+  }
+  .banner .details {
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 8px;
+  }
+  .banner .datetime {
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 26px;
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124, 138, 110, 0.18);
+    border: 1px solid rgba(124, 138, 110, 0.45);
+    color: var(--paper-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #8fbf7a;
+    box-shadow: 0 0 0 3px rgba(143,191,122,0.2);
+  }
+  .banner .btn-primary {
+    font-size: 1rem;
+    padding: 16px 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .banner .location {
+    margin-top: 28px;
+    color: var(--paper-dim);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── Live Games — two column ── */
+  .promo {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 90px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 780px) { .promo { grid-template-columns: 1fr; padding: 56px 24px; gap: 40px; } }
+
+  .promo-copy .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 18px;
+    display: block;
+  }
+  .promo-copy h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.08;
+    margin-bottom: 22px;
+  }
+  .promo-copy p {
+    color: var(--paper-dim);
+    font-size: 1.05rem;
+    margin-bottom: 32px;
+    max-width: 46ch;
+  }
+  .promo-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+
+  .link-secondary {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--paper-dim);
+    border-bottom: 1px solid var(--paper-dim);
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .link-secondary:hover { color: var(--paper); border-color: var(--paper); }
+
+  /* Today callout */
+  .today-callout {
+    background: rgba(232, 168, 115, 0.1);
+    border: 1px solid rgba(232, 168, 115, 0.35);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+  }
+  .today-callout .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tan);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .today-line { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
+  .today-line:first-of-type { margin-top: 0; }
+  .today-kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tan);
+    width: 76px;
+    flex-shrink: 0;
+  }
+  .today-kicker.live { color: #8fbf7a; }
+  .today-callout .game { font-size: 1rem; font-weight: 600; }
+
+  .schedule-card {
+    background: var(--bg-panel);
+    border: 1px solid #2a3f49;
+    border-radius: 6px;
+    padding: 32px;
+  }
+  .schedule-card h3 { font-size: 1.1rem; margin-bottom: 20px; color: var(--tan); }
+  .schedule-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 14px;
+    margin: 0 -14px;
+    border-top: 1px solid #263a43;
+    font-size: 0.9rem;
+    border-radius: 4px;
+  }
+  .schedule-row:first-of-type { border-top: none; }
+  .schedule-row.is-today {
+    background: rgba(232, 168, 115, 0.08);
+    border-top-color: transparent;
+  }
+  .schedule-day { font-weight: 600; color: var(--paper); display: flex; align-items: center; gap: 8px; }
+  .today-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--coral);
+    color: var(--paper);
+    padding: 2px 7px;
+    border-radius: 10px;
+  }
+  .schedule-detail { font-family: 'IBM Plex Mono', monospace; color: var(--paper-dim); font-size: 0.82rem; text-align: right; }
+
+  /* ── Footer ── */
+  footer { background: var(--bg-panel); }
+  .footer-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 32px 36px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 780px) { .footer-wrap { grid-template-columns: 1fr; padding: 44px 24px 28px; gap: 32px; } }
+
+  .footer-brand img { height: 44px; margin-bottom: 14px; }
+  .footer-brand p { color: var(--paper-dim); font-size: 0.9rem; max-width: 32ch; }
+
+  .footer-col h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a, .footer-col span { font-size: 0.9rem; color: var(--paper-dim); }
+  .footer-col a:hover { color: var(--tan); }
+
+  .footer-bottom {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 32px 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.78rem;
+    color: #6b7880;
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
-  <div>
-    <h1>Bluffs.Poker</h1>
-    <p>New site coming soon.</p>
+
+<header>
+  <div class="nav-wrap">
+    <a href="/" class="logo"><img src="assets/logo.png" alt="Desert Bluffs Poker"></a>
+    <nav>
+      <ul>
+        <li><a href="/tournaments.html">Tournaments</a></li>
+        <li><a href="/live-games.html">Live Games</a></li>
+        <li><a href="/promotions.html">Promotions</a></li>
+        <li><a href="https://desertbluffsjobs.com" target="_blank" rel="noopener">Careers</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <span class="phone">509-767-6537</span>
+      <a class="btn-primary" href="https://tricitiespoker.com/" target="_blank" rel="noopener">Register Now</a>
+    </div>
   </div>
+  <div class="horizon"></div>
+</header>
+
+<section class="banner">
+  <div class="banner-inner">
+    <div class="amount">$25,000 GUARANTEED</div>
+    <div class="variant">NLH</div>
+    <div class="details">$450 Buy-in &middot; 40,000 Chips &middot; 40M Levels</div>
+    <div class="datetime">Saturday, September 26, 2026 &middot; 11:00 AM</div>
+    <div class="status-pill"><span class="status-dot"></span> Online Registration Open</div>
+    <div>
+      <a class="btn-primary" href="https://tricitiespoker.com/" target="_blank" rel="noopener">Register on Tri-Cities Poker &rarr;</a>
+    </div>
+    <div class="location">Desert Bluffs Poker Room &middot; 5215 W. Clearwater Ave #111, Kennewick, WA 99336</div>
+  </div>
+</section>
+
+<main>
+  <section class="promo">
+    <div class="promo-copy">
+      <span class="eyebrow">Live Games</span>
+      <h2>A game running every night of the week.</h2>
+      <p>Full schedules and live registration run through Tri-Cities Poker — our tournament partner platform. Browse what's running and lock in your seat in under a minute.</p>
+      <div class="promo-actions">
+        <a class="btn-primary" href="https://tricitiespoker.com/" target="_blank" rel="noopener">Register on Tri-Cities Poker</a>
+        <a class="link-secondary" href="/live-games.html">View full schedule</a>
+      </div>
+    </div>
+    <div>
+      <div class="today-callout" id="today-callout">
+        <span class="label">Today</span>
+        <div class="today-line"><span class="today-kicker">Tournament</span><span class="game" id="today-tourney">Loading…</span></div>
+        <div class="today-line"><span class="today-kicker live">Live</span><span class="game" id="today-live">Loading…</span></div>
+      </div>
+      <div class="schedule-card">
+        <h3 class="mono">This Week</h3>
+        <div id="schedule-list"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="horizon"></div>
+  <div class="footer-wrap">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="Desert Bluffs Poker">
+      <p>Tri-Cities' poker room — daily tournaments, live games, and promotions at Clearwater &amp; Edison.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <ul>
+        <li><span>5215 W Clearwater Ave #111</span></li>
+        <li><span>Kennewick, WA 99336</span></li>
+        <li><a href="tel:5097676537">509-767-6537</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="/tournaments.html">Tournaments</a></li>
+        <li><a href="/live-games.html">Live Games</a></li>
+        <li><a href="/promotions.html">Promotions</a></li>
+        <li><a href="https://desertbluffsjobs.com" target="_blank" rel="noopener">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Desert Bluffs Poker Club. Operated under Washington State Gambling Commission oversight.</span>
+    <span>Kennewick, WA</span>
+  </div>
+</footer>
+
+<script>
+  const schedule = [
+    { day: "Sunday",    tourney: "Tourney · $75",   live: "King of the Hill · Texas Holdem" },
+    { day: "Monday",    tourney: "Tahoe · $50",     live: "King of the Hill · Texas Holdem" },
+    { day: "Tuesday",   tourney: "Holdem · $10",    live: "King of the Hill · Texas Holdem" },
+    { day: "Wednesday", tourney: "Big O · $50",     live: "King of the Hill · Texas Holdem" },
+    { day: "Thursday",  tourney: "Tourney · $75",   live: "The Big Game · 2-5 Hold'em" },
+    { day: "Friday",    tourney: "Bounty · $150",   live: "King of the Hill · Texas Holdem" },
+    { day: "Saturday",  tourney: "Tourney · $80",   live: "King of the Hill · Texas Holdem" },
+  ];
+
+  const todayIndex = new Date().getDay(); // 0 = Sunday
+  const listEl = document.getElementById('schedule-list');
+
+  schedule.forEach((row, i) => {
+    const div = document.createElement('div');
+    div.className = 'schedule-row' + (i === todayIndex ? ' is-today' : '');
+    div.innerHTML = `
+      <span class="schedule-day">${row.day}${i === todayIndex ? '<span class="today-tag">Today</span>' : ''}</span>
+      <span class="schedule-detail">${row.tourney}</span>
+    `;
+    listEl.appendChild(div);
+  });
+
+  document.getElementById('today-tourney').textContent = schedule[todayIndex].tourney;
+  document.getElementById('today-live').textContent = schedule[todayIndex].live;
+</script>
+
 </body>
 </html>
