@@ -29,14 +29,8 @@
     line-height: 1.5;
   }
 
-  h1, h2, h3, .display {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-
+  h1, h2, h3, .display { font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -0.01em; }
   .mono { font-family: 'IBM Plex Mono', monospace; }
-
   a { color: inherit; text-decoration: none; }
 
   .horizon {
@@ -46,56 +40,30 @@
     opacity: 0.85;
   }
 
+  section { scroll-margin-top: 84px; }
+
   /* ── Header / Nav ── */
   header { position: sticky; top: 0; z-index: 100; background: var(--bg); }
-
   .nav-wrap {
-    max-width: 1180px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 16px 32px;
   }
-
   .logo { display: flex; align-items: center; }
   .logo img { height: 52px; width: auto; display: block; }
-
   nav ul { list-style: none; display: flex; gap: 36px; }
-
-  nav a {
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--paper-dim);
-    transition: color 0.15s ease;
-  }
+  nav a { font-size: 0.92rem; font-weight: 500; color: var(--paper-dim); transition: color 0.15s ease; }
   nav a:hover, nav a:focus-visible { color: var(--tan); }
   nav a:focus-visible { outline: 2px solid var(--tan); outline-offset: 4px; border-radius: 2px; }
-
   .nav-cta { display: flex; align-items: center; gap: 20px; }
-
-  .phone {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--paper-dim);
-    display: none;
-  }
-
+  .phone { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--paper-dim); display: none; }
   .btn-primary {
-    background: var(--coral);
-    color: var(--paper);
-    padding: 10px 22px;
-    border-radius: 3px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
-    transition: background 0.15s ease, transform 0.15s ease;
-    display: inline-block;
+    background: var(--coral); color: var(--paper); padding: 10px 22px; border-radius: 3px;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap;
+    transition: background 0.15s ease, transform 0.15s ease; display: inline-block;
   }
   .btn-primary:hover, .btn-primary:focus-visible { background: #ee7059; transform: translateY(-1px); }
   .btn-primary:focus-visible { outline: 2px solid var(--tan); outline-offset: 3px; }
-
   @media (min-width: 900px) { .phone { display: block; } }
   @media (max-width: 780px) {
     nav ul { display: none; }
@@ -103,229 +71,202 @@
     .logo img { height: 42px; }
   }
 
-  /* ── Featured Tournament Banner ── */
-  .banner {
-    background:
-      radial-gradient(ellipse at top, rgba(43,112,137,0.35), transparent 60%),
-      var(--bg);
-    background-image:
-      radial-gradient(ellipse at top, rgba(43,112,137,0.35), transparent 60%),
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 24px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 24px);
-    border-bottom: 1px solid #223842;
-    padding: 56px 32px 60px;
-    text-align: center;
+  /* ── Hero — two column: pitch left, Today/This Week right ── */
+  .hero {
+    max-width: 1180px; margin: 0 auto;
+    padding: 64px 32px 80px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: start;
   }
-  .banner-inner { max-width: 900px; margin: 0 auto; }
-  .banner .amount {
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
-    color: var(--tan);
-    line-height: 1;
-    letter-spacing: -0.01em;
-  }
-  .banner .variant {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    color: var(--paper);
-    margin: 14px 0 22px;
-  }
-  .banner .details {
-    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
-    font-weight: 600;
-    color: var(--paper);
-    margin-bottom: 8px;
-  }
-  .banner .datetime {
-    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
-    font-weight: 600;
-    color: var(--paper);
-    margin-bottom: 26px;
-  }
-  .status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(124, 138, 110, 0.18);
-    border: 1px solid rgba(124, 138, 110, 0.45);
-    color: var(--paper-dim);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 7px 16px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-  }
-  .status-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: #8fbf7a;
-    box-shadow: 0 0 0 3px rgba(143,191,122,0.2);
-  }
-  .banner .btn-primary {
-    font-size: 1rem;
-    padding: 16px 36px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .banner .location {
-    margin-top: 28px;
-    color: var(--paper-dim);
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
-  }
+  @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding: 44px 24px 56px; gap: 40px; } }
 
-  /* ── Live Games — two column ── */
-  .promo {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 90px 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
+  .hero-copy .eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--tan); margin-bottom: 18px; display: block;
   }
-  @media (max-width: 780px) { .promo { grid-template-columns: 1fr; padding: 56px 24px; gap: 40px; } }
-
-  .promo-copy .eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--tan);
-    margin-bottom: 18px;
-    display: block;
-  }
-  .promo-copy h2 {
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    line-height: 1.08;
-    margin-bottom: 22px;
-  }
-  .promo-copy p {
-    color: var(--paper-dim);
-    font-size: 1.05rem;
-    margin-bottom: 32px;
-    max-width: 46ch;
-  }
-  .promo-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-
+  .hero-copy h1 { font-size: clamp(2.1rem, 4.2vw, 3rem); line-height: 1.06; margin-bottom: 22px; }
+  .hero-copy p { color: var(--paper-dim); font-size: 1.05rem; margin-bottom: 32px; max-width: 46ch; }
+  .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
   .link-secondary {
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--paper-dim);
-    border-bottom: 1px solid var(--paper-dim);
-    padding-bottom: 2px;
+    font-size: 0.92rem; font-weight: 500; color: var(--paper-dim);
+    border-bottom: 1px solid var(--paper-dim); padding-bottom: 2px;
     transition: color 0.15s ease, border-color 0.15s ease;
   }
   .link-secondary:hover { color: var(--paper); border-color: var(--paper); }
 
-  /* Today callout */
+  .amount-h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--tan); line-height: 1.02;
+    margin-bottom: 12px; letter-spacing: -0.01em;
+  }
+  .variant-line { font-size: 0.85rem; letter-spacing: 0.2em; color: var(--paper); margin-bottom: 16px; }
+  .details-line { font-size: 1.05rem; font-weight: 600; color: var(--paper); margin-bottom: 6px; }
+  .hero-copy .status-pill { margin: 18px 0 28px; }
+  .seats-left { color: var(--coral); font-weight: 600; font-size: 0.92rem; margin-bottom: 4px; }
+  .hero-copy .hero-actions { margin-bottom: 28px; }
+
+  .location-line, .hours-line {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--paper-dim); font-size: 0.88rem;
+  }
+  .location-line { padding-top: 24px; border-top: 1px solid #24363f; }
+  .hours-line { padding-top: 10px; }
+
+  .sub-list {
+    font-size: 0.78rem; color: var(--paper-dim); margin-bottom: 18px;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+
+  /* Today callout + This Week — right column */
   .today-callout {
     background: rgba(232, 168, 115, 0.1);
     border: 1px solid rgba(232, 168, 115, 0.35);
-    border-radius: 6px;
-    padding: 18px 22px;
-    margin-bottom: 28px;
+    border-radius: 6px; padding: 20px 22px; margin-bottom: 20px;
   }
   .today-callout .label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--tan);
-    display: block;
-    margin-bottom: 6px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--tan); display: block; margin-bottom: 10px;
   }
-  .today-line { display: flex; align-items: baseline; gap: 10px; margin-top: 6px; }
-  .today-line:first-of-type { margin-top: 0; }
+  .today-line { display: flex; align-items: baseline; gap: 10px; margin-top: 8px; }
+  .today-line:nth-of-type(1) { margin-top: 0; }
   .today-kicker {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tan);
-    width: 76px;
-    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--tan); width: 82px; flex-shrink: 0;
   }
   .today-kicker.live { color: #8fbf7a; }
   .today-callout .game { font-size: 1rem; font-weight: 600; }
 
   .schedule-card {
-    background: var(--bg-panel);
-    border: 1px solid #2a3f49;
-    border-radius: 6px;
-    padding: 32px;
+    background: var(--bg-panel); border: 1px solid #2a3f49; border-radius: 6px; padding: 28px;
   }
-  .schedule-card h3 { font-size: 1.1rem; margin-bottom: 20px; color: var(--tan); }
+  .schedule-card h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; margin-bottom: 4px; color: var(--paper); }
+  .schedule-card .sub { font-size: 0.78rem; color: var(--paper-dim); margin-bottom: 18px; }
   .schedule-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 12px 14px;
-    margin: 0 -14px;
-    border-top: 1px solid #263a43;
-    font-size: 0.9rem;
-    border-radius: 4px;
+    padding: 16px 0; border-top: 1px solid #263a43;
   }
   .schedule-row:first-of-type { border-top: none; }
-  .schedule-row.is-today {
-    background: rgba(232, 168, 115, 0.08);
-    border-top-color: transparent;
+  .schedule-row.is-today { background: rgba(232, 168, 115, 0.07); margin: 0 -20px; padding: 16px 20px; border-top-color: transparent; }
+  .schedule-day {
+    font-family: 'Fraunces', serif; font-weight: 600; color: var(--tan); font-size: 1rem;
+    display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
   }
-  .schedule-day { font-weight: 600; color: var(--paper); display: flex; align-items: center; gap: 8px; }
   .today-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--coral);
-    color: var(--paper);
-    padding: 2px 7px;
-    border-radius: 10px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em;
+    text-transform: uppercase; background: var(--coral); color: var(--paper); padding: 2px 7px; border-radius: 10px;
   }
-  .schedule-detail { font-family: 'IBM Plex Mono', monospace; color: var(--paper-dim); font-size: 0.82rem; text-align: right; }
+  .schedule-line { display: flex; gap: 8px; font-size: 0.86rem; line-height: 1.5; margin-bottom: 4px; }
+  .schedule-line:last-child { margin-bottom: 0; }
+  .schedule-line .tag {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--paper-dim); flex-shrink: 0; padding-top: 2px;
+  }
+  .schedule-line.live .tag { color: #8fbf7a; }
+  .schedule-line .val { color: var(--paper); }
+  .schedule-line.live .val { color: #cfe8c2; }
+
+  /* ── Featured Tournament Banner ── */
+  .banner {
+    background: radial-gradient(ellipse at top, rgba(43,112,137,0.35), transparent 60%), var(--bg);
+    background-image:
+      radial-gradient(ellipse at top, rgba(43,112,137,0.35), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 24px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 24px);
+    border-top: 1px solid #223842; border-bottom: 1px solid #223842;
+    padding: 56px 32px 60px; text-align: center;
+  }
+  .banner-inner { max-width: 900px; margin: 0 auto; }
+  .banner .amount {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(2.4rem, 6vw, 4.2rem);
+    color: var(--tan); line-height: 1; letter-spacing: -0.01em;
+  }
+  .banner .variant { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; letter-spacing: 0.2em; color: var(--paper); margin: 14px 0 22px; }
+  .banner .details, .banner .datetime { font-size: clamp(1.1rem, 2.4vw, 1.5rem); font-weight: 600; color: var(--paper); margin-bottom: 8px; }
+  .banner .datetime { margin-bottom: 26px; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(124, 138, 110, 0.18); border: 1px solid rgba(124, 138, 110, 0.45);
+    color: var(--paper-dim); font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 16px; border-radius: 20px; margin-bottom: 30px;
+  }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #8fbf7a; box-shadow: 0 0 0 3px rgba(143,191,122,0.2); }
+  .banner .btn-primary { font-size: 1rem; padding: 16px 36px; display: inline-flex; align-items: center; gap: 10px; }
+  .banner .location { margin-top: 28px; color: var(--paper-dim); font-size: 0.85rem; letter-spacing: 0.02em; }
+
+  /* ── Full week section ── */
+  .week-section { max-width: 1180px; margin: 0 auto; padding: 90px 32px; }
+  .section-head { margin-bottom: 44px; }
+  .section-head .eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--tan); margin-bottom: 14px; display: block;
+  }
+  .section-head h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); max-width: 20ch; }
+
+  .week-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px;
+    background: #263a43; border: 1px solid #263a43; border-radius: 8px; overflow: hidden;
+  }
+  .week-card { background: var(--bg-panel); padding: 26px 24px; }
+  .week-card.is-today { background: #26332a; }
+  .week-card .day-name {
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .week-card .row-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--tan); margin-bottom: 4px;
+  }
+  .week-card .row-label.live { color: #8fbf7a; margin-top: 16px; }
+  .week-card .row-value { font-size: 0.88rem; color: var(--paper); line-height: 1.4; }
+
+  /* ── Promotions ── */
+  .promotions {
+    background: var(--bg-panel); border-top: 1px solid #263a43; border-bottom: 1px solid #263a43;
+  }
+  .promo-inner {
+    max-width: 1180px; margin: 0 auto; padding: 90px 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  @media (max-width: 900px) { .promo-inner { grid-template-columns: 1fr; padding: 56px 24px; gap: 32px; } }
+  .promo-inner h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); margin-bottom: 20px; }
+  .promo-inner p { color: var(--paper-dim); font-size: 1rem; max-width: 46ch; }
+  .jackpot-figure {
+    background: var(--bg); border: 1px solid #2a3f49; border-radius: 8px;
+    padding: 40px; text-align: center;
+  }
+  .jackpot-figure .figure {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.2rem);
+    color: var(--coral);
+  }
+  .jackpot-figure .caption { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--paper-dim); margin-top: 10px; }
+
+  /* ── Careers ── */
+  .careers-strip {
+    max-width: 1180px; margin: 0 auto; padding: 70px 32px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;
+  }
+  .careers-strip h2 { font-size: clamp(1.5rem, 2.8vw, 2rem); max-width: 30ch; }
+  .careers-strip p { color: var(--paper-dim); margin-top: 8px; }
 
   /* ── Footer ── */
   footer { background: var(--bg-panel); }
   .footer-wrap {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 56px 32px 36px;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 48px;
+    max-width: 1180px; margin: 0 auto; padding: 56px 32px 36px;
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px;
   }
   @media (max-width: 780px) { .footer-wrap { grid-template-columns: 1fr; padding: 44px 24px 28px; gap: 32px; } }
-
   .footer-brand img { height: 44px; margin-bottom: 14px; }
   .footer-brand p { color: var(--paper-dim); font-size: 0.9rem; max-width: 32ch; }
-
   .footer-col h4 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--tan);
-    margin-bottom: 16px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--tan); margin-bottom: 16px;
   }
   .footer-col ul { list-style: none; }
   .footer-col li { margin-bottom: 10px; }
   .footer-col a, .footer-col span { font-size: 0.9rem; color: var(--paper-dim); }
   .footer-col a:hover { color: var(--tan); }
-
   .footer-bottom {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 24px 32px 32px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 0.78rem;
-    color: #6b7880;
+    max-width: 1180px; margin: 0 auto; padding: 24px 32px 32px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-size: 0.78rem; color: #6b7880;
   }
 
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -338,9 +279,6 @@
     <a href="/" class="logo"><img src="logo.png" alt="Desert Bluffs Poker"></a>
     <nav>
       <ul>
-        <li><a href="/tournaments.html">Tournaments</a></li>
-        <li><a href="/live-games.html">Live Games</a></li>
-        <li><a href="/promotions.html">Promotions</a></li>
         <li><a href="https://desertbluffsjobs.com" target="_blank" rel="noopener">Careers</a></li>
       </ul>
     </nav>
@@ -352,31 +290,29 @@
   <div class="horizon"></div>
 </header>
 
-<section class="banner">
-  <div class="banner-inner">
-    <div class="amount">$25,000 GUARANTEED</div>
-    <div class="variant">NLH</div>
-    <div class="details">$450 Buy-in &middot; 40,000 Chips &middot; 40M Levels</div>
-    <div class="datetime">Saturday, September 26, 2026 &middot; 11:00 AM</div>
-    <div class="status-pill"><span class="status-dot"></span> Online Registration Open</div>
-    <div>
-      <a class="btn-primary" href="https://tricitiespoker.com/" target="_blank" rel="noopener">Register on Tri-Cities Poker &rarr;</a>
-    </div>
-    <div class="location">Desert Bluffs Poker Room &middot; 5215 W. Clearwater Ave #111, Kennewick, WA 99336</div>
-  </div>
-</section>
-
 <main>
-  <section class="promo">
-    <div class="promo-copy">
-      <span class="eyebrow">Live Games</span>
-      <h2>A game running every night of the week.</h2>
-      <p>Full schedules and live registration run through Tri-Cities Poker — our tournament partner platform. Browse what's running and lock in your seat in under a minute.</p>
-      <div class="promo-actions">
+  <!-- ── Hero: $25K GTD + Today/This Week ── -->
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Tourney:</span>
+      <h1 class="amount-h1">$25K GTD &middot; Sept 26</h1>
+      <p class="details-line">Our championship event is back with just 12 seats left. $450 buy-in, $40,000 chips &amp; 40m levels. 9 handed.</p>
+      <p class="details-line">11 AM, Saturday, September 26, 2026.</p>
+      <p class="seats-left">Only 12 seats left</p>
+      <div class="status-pill"><span class="status-dot"></span> Online Reg Open</div>
+      <div class="hero-actions">
         <a class="btn-primary" href="https://tricitiespoker.com/" target="_blank" rel="noopener">Register on Tri-Cities Poker</a>
-        <a class="link-secondary" href="/live-games.html">View full schedule</a>
+      </div>
+      <div class="location-line">
+        <span>&#128205;</span>
+        <span>5215 W Clearwater Ave #111, Kennewick, WA 99336 &middot; 509-767-6537</span>
+      </div>
+      <div class="hours-line">
+        <span>&#128337;</span>
+        <span>Open Daily &middot; 3 PM &ndash; Close</span>
       </div>
     </div>
+
     <div>
       <div class="today-callout" id="today-callout">
         <span class="label">Today</span>
@@ -384,10 +320,48 @@
         <div class="today-line"><span class="today-kicker live">Live</span><span class="game" id="today-live">Loading…</span></div>
       </div>
       <div class="schedule-card">
-        <h3 class="mono">This Week</h3>
+        <h3>LIVE PLAY &amp; Daily Tournaments</h3>
+        <div class="sub-list">
+          <div>Daily Tournaments start at 6:30 PM</div>
+          <div>Live Play starts at 3 PM</div>
+          <div>$499 Montes Before 5pm.</div>
+        </div>
         <div id="schedule-list"></div>
       </div>
     </div>
+  </section>
+
+  <!-- ── Full Week — Tournaments & Live Games ── -->
+  <section class="week-section" id="week">
+    <div class="section-head">
+      <span class="eyebrow">Tournaments &amp; Live Games</span>
+      <h2>Every day, tournament and cash game.</h2>
+    </div>
+    <div class="week-grid" id="week-grid"></div>
+  </section>
+
+  <!-- ── Promotions ── -->
+  <section class="promotions" id="promotions">
+    <div class="promo-inner">
+      <div>
+        <span class="eyebrow" style="font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tan);display:block;margin-bottom:14px;">Promotions</span>
+        <h2>Our Promos Can't Be Beat:</h2>
+        <p>Ongoing high hand promotions run alongside our live games — check the schedule above for which days pay out. Our Bad Beat Jackpot has paid out over $22,000 to date.</p>
+      </div>
+      <div class="jackpot-figure">
+        <div class="figure mono">$22,000+</div>
+        <div class="caption">BAD BEAT JACKPOT PAID (AAAKK BEATEN)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Careers ── -->
+  <section class="careers-strip">
+    <div>
+      <h2>We're hiring.</h2>
+      <p>Dealers, floor, and support roles — open now.</p>
+    </div>
+    <a class="btn-primary" href="https://desertbluffsjobs.com" target="_blank" rel="noopener">View Openings</a>
   </section>
 </main>
 
@@ -409,9 +383,9 @@
     <div class="footer-col">
       <h4>Site</h4>
       <ul>
-        <li><a href="/tournaments.html">Tournaments</a></li>
-        <li><a href="/live-games.html">Live Games</a></li>
-        <li><a href="/promotions.html">Promotions</a></li>
+        <li><a href="#week">Tournaments</a></li>
+        <li><a href="#week">Live Games</a></li>
+        <li><a href="#promotions">Promotions</a></li>
         <li><a href="https://desertbluffsjobs.com" target="_blank" rel="noopener">Careers</a></li>
       </ul>
     </div>
@@ -424,30 +398,59 @@
 
 <script>
   const schedule = [
-    { day: "Sunday",    tourney: "Tourney · $75",   live: "King of the Hill · Texas Holdem" },
-    { day: "Monday",    tourney: "Tahoe · $50",     live: "King of the Hill · Texas Holdem" },
-    { day: "Tuesday",   tourney: "Holdem · $10",    live: "King of the Hill · Texas Holdem" },
-    { day: "Wednesday", tourney: "Big O · $50",     live: "King of the Hill · Texas Holdem" },
-    { day: "Thursday",  tourney: "Tourney · $75",   live: "The Big Game · 2-5 Hold'em" },
-    { day: "Friday",    tourney: "Bounty · $150",   live: "King of the Hill · Texas Holdem" },
-    { day: "Saturday",  tourney: "Tourney · $80",   live: "King of the Hill · Texas Holdem" },
+    { day: "Sunday",
+      tourney: "6:30 &middot; NLH Tourney &middot; $50",
+      live: "Flush Hunter: Collect all 4 Flushes, win $510." },
+    { day: "Monday",
+      tourney: "6:30 &middot; Tahoe (3 Card Holdem) &middot; $50",
+      live: "King of the Hill: If your hand holds for 1 hour, get $300." },
+    { day: "Tuesday",
+      tourney: "6:30 &middot; NLH &middot; $10 &middot; $2,500 GTD",
+      live: "King of the Hill Encore" },
+    { day: "Wednesday",
+      tourney: "6:30 &middot; Big O &middot; $50 &middot; $600 GTD",
+      live: "Flush Hunter: Collect all 4 flushes, win $510." },
+    { day: "Thursday",
+      tourney: "6:30 &middot; NLH &middot; $50 &middot; $500 GTD",
+      live: "2/5 NLH &amp; Progressive High Hands" },
+    { day: "Friday",
+      tourney: "6:30 &middot; $150 Bounty &middot; $1,500 GTD",
+      live: "5 Card PLO/Big O @ 5pm." },
+    { day: "Saturday",
+      tourney: "6:30 &middot; $50 NLH",
+      live: "10/20 Omaha &amp; Progressive High Hands" },
   ];
 
   const todayIndex = new Date().getDay(); // 0 = Sunday
   const listEl = document.getElementById('schedule-list');
+  const gridEl = document.getElementById('week-grid');
 
   schedule.forEach((row, i) => {
+    // Right column — LIVE PLAY & Daily Tournaments
     const div = document.createElement('div');
     div.className = 'schedule-row' + (i === todayIndex ? ' is-today' : '');
     div.innerHTML = `
-      <span class="schedule-day">${row.day}${i === todayIndex ? '<span class="today-tag">Today</span>' : ''}</span>
-      <span class="schedule-detail">${row.tourney}</span>
+      <div class="schedule-day">${row.day}${i === todayIndex ? '<span class="today-tag">Today</span>' : ''}</div>
+      <div class="schedule-line"><span class="tag">Tourney:</span><span class="val">${row.tourney}</span></div>
+      <div class="schedule-line live"><span class="tag">Live:</span><span class="val">${row.live}</span></div>
     `;
     listEl.appendChild(div);
+
+    // Full week grid
+    const card = document.createElement('div');
+    card.className = 'week-card' + (i === todayIndex ? ' is-today' : '');
+    card.innerHTML = `
+      <div class="day-name">${row.day}${i === todayIndex ? '<span class="today-tag">Today</span>' : ''}</div>
+      <div class="row-label">Tournament</div>
+      <div class="row-value">${row.tourney}</div>
+      <div class="row-label live">Live</div>
+      <div class="row-value">${row.live}</div>
+    `;
+    gridEl.appendChild(card);
   });
 
-  document.getElementById('today-tourney').textContent = schedule[todayIndex].tourney;
-  document.getElementById('today-live').textContent = schedule[todayIndex].live;
+  document.getElementById('today-tourney').innerHTML = schedule[todayIndex].tourney;
+  document.getElementById('today-live').innerHTML = schedule[todayIndex].live;
 </script>
 
 </body>
